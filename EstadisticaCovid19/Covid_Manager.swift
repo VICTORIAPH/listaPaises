@@ -53,6 +53,7 @@ struct CovidManager {
             //crear un array de paises de tipo covid datos
             
             let paises: [CovidDatos] = datosDecodificados
+             return paises
             
         }
     }
