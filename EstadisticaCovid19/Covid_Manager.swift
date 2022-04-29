@@ -8,7 +8,7 @@
 import Foundation
 protocol covidManagerDelegado {
     func huboError(cualError: String)
-    func actualizar(paises: [CovidDatos])
+    func actualizar(paises: [CovidDatos?])
 }
 
 struct CovidManager {
@@ -31,7 +31,8 @@ struct CovidManager {
                     print("DatosSeguros")
                     print(datosSeguros)
                     
-                    if let listaPaises = self.parsearJSON(datosCovid: datosSeguros){
+                    if let listaPaises = self.parsearJSON(datosCovid: datosSeguros)
+                    {
                         delegado?.actualizar(paises: listaPaises)
                        print("Lista paises: \(listaPaises.count)")
                         

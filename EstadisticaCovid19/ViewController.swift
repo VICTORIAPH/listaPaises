@@ -11,11 +11,22 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tablaPaises: UITableView!
     //instanceando el covidManager
+    var paisSent: CovidDatos?
     var covidManager = CovidManager()
     var listaPaises: [CovidDatos] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //1,- registrar en la tabla la n ueva celda
+        tablaPaises.register(UINib(nibName: "CeldaPaisTableViewCell", bundle: nil), forCellReuseIdentifier: <#T##String#>)
+        
+        
+        
+        
+        
+        
         // Do any additional setup after loading the view.
         //delegado paises
         tablaPaises.delegate = self //hace referencia al viewControler
@@ -31,8 +42,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         return listaPaises.count
     }
     
+    //2,- castear la centa agregando as celda
+    //  metodo para crar la ceñda personlalizada
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celda = tablaPaises.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
+        let celda = tablaPaises.dequeueReusableCell(withIdentifier: "celda", for: indexPath) as! CeldaPaisTableViewCell
         
         celda.textLabel?.text = listaPaises[indexPath.row].country
         celda.detailTextLabel?.text = "Casos activos: \(listaPaises[indexPath.row].active ?? 0)"
