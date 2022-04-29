@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         
         
         //1,- registrar en la tabla la n ueva celda
-        tablaPaises.register(UINib(nibName: "CeldaPaisTableViewCell", bundle: nil), forCellReuseIdentifier: <#T##String#>)
+        tablaPaises.register(UINib(nibName: "CeldaPaisTableViewCell", bundle: nil), forCellReuseIdentifier: "celda")
         
         
         

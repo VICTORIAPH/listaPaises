@@ -14,6 +14,7 @@ struct CovidDatos: Decodable{
     let active: Double?
     let countryInfo: CountryInfo?
     let cases: Double?
+    let recovered: Double
 }
 
 struct CountryInfo: Decodable {

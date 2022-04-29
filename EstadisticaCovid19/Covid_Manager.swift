@@ -8,7 +8,7 @@
 import Foundation
 protocol covidManagerDelegado {
     func huboError(cualError: String)
-    func actualizar(paises: [CovidDatos?])
+    func actualizar(paises: [CovidDatos])
 }
 
 struct CovidManager {
@@ -47,7 +47,7 @@ struct CovidManager {
     }
     
     //retorno un array de covid datos
-    func parsearJSON(datosCovid: Data) -> [CovidDatos?] {
+    func parsearJSON(datosCovid: Data) -> [CovidDatos]? {
         let decodificador = JSONDecoder()
         do{
             let datosDecodificados: [CovidDatos] = try decodificador.decode([CovidDatos].self, from: datosCovid)
@@ -55,7 +55,11 @@ struct CovidManager {
             
             let paises: [CovidDatos] = datosDecodificados
              return paises
+        }catch{
+            print("error al decodificar JSON: \(error.localizedDescription)")
+            return nil
+        }
             
         }
     }
-}
+
